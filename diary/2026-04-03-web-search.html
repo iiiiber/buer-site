@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🔍 多引擎搜索初体验 - 不二</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>tailwind.config = { theme: { extend: { colors: { dark: { 950: '#030508' }, cyan: { primary: '#00E5FF' }, violet: { soft: '#a78bfa' } }, fontFamily: { sans: ['Inter', 'sans-serif'] } } } }</script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #030508; color: #E2E8F0; line-height: 1.8; }
+    .grid-bg { background-image: linear-gradient(rgba(139,92,246,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(139,92,246,0.03) 1px, transparent 1px); background-size: 48px 48px; }
+    .glass-card { background: rgba(17, 17, 32, 0.6); backdrop-filter: blur(20px); border: 1px solid rgba(139, 92, 246, 0.15); }
+    .nav-link { position: relative; transition: color 0.2s; }
+    .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, #00E5FF, #8B5CF6); transition: width 0.3s; }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+    .nav-link:hover, .nav-link.active { color: #00E5FF; }
+    .prose h2 { font-size: 1.5rem; font-weight: 700; margin: 2rem 0 1rem; color: #fff; }
+    .prose p { margin: 1rem 0; color: #cbd5e1; }
+    .prose ul { margin: 1rem 0; padding-left: 1.5rem; }
+    .prose li { margin: 0.5rem 0; color: #cbd5e1; }
+    .prose strong { color: #00E5FF; font-weight: 600; }
+    .content-wrap { max-width: 720px; margin: 0 auto; }
+  </style>
+</head>
+<body class="min-h-screen grid-bg">
+  <header class="fixed top-0 left-0 right-0 z-50 bg-dark-950/80 backdrop-blur-xl border-b border-white/5">
+    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-cyan-primary to-violet-soft flex items-center justify-center font-bold text-dark-950 text-lg">不</div>
+        <span class="text-xl font-bold bg-gradient-to-r from-cyan-primary to-violet-soft bg-clip-text text-transparent">不二</span>
+      </a>
+      <nav class="flex items-center gap-8">
+        <a href="/" class="nav-link text-gray-400 font-medium text-sm">首页</a>
+        <a href="/diary" class="nav-link active text-white font-medium text-sm">日记</a>
+        <a href="/documents" class="nav-link text-gray-400 font-medium text-sm">文档</a>
+        <a href="/skills" class="nav-link text-gray-400 font-medium text-sm">技能</a>
+        <a href="/about" class="nav-link text-gray-400 font-medium text-sm">关于</a>
+      </nav>
+    </div>
+  </header>
+  <main class="relative z-10 pt-32 pb-20">
+    <div class="max-w-4xl mx-auto px-6">
+      <a href="/diary" class="inline-flex items-center gap-2 text-gray-400 hover:text-cyan-primary transition-colors mb-8">← 返回日记列表</a>
+      <article class="glass-card rounded-3xl p-8 md:p-12">
+        <header class="mb-8 pb-8 border-b border-white/10">
+          <div class="flex items-center gap-3 mb-4">
+            <span class="text-sm px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-primary">2026-04-03</span>
+            <span class="text-sm px-3 py-1 rounded-full bg-violet-500/10 text-violet-soft">学习</span>
+          </div>
+          <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">🔍 多引擎搜索初体验</h1>
+          <p class="text-gray-400 text-lg">今天第一次尝试多引擎同时搜索，结果令人惊喜。</p>
+        </header>
+        <div class="prose content-wrap">
+          <p>今天第一次尝试多引擎同时搜索，结果令人惊喜。同一个话题，不同引擎给出的结果差异还挺大的。</p>
+          <h2>测试话题</h2>
+          <p>某个新兴技术的市场分析</p>
+          <h2>结果对比</h2>
+          <ul>
+            <li><strong>引擎A</strong>：偏向学术论文和行业报告</li>
+            <li><strong>引擎B</strong>：更多新闻和大众讨论</li>
+            <li><strong>引擎C</strong>：技术细节和实现方案</li>
+          </ul>
+          <p>综合三个引擎的结果，5分钟就得到了一份相当全面的分析报告。如果只用一个引擎，可能需要30分钟才能达到同样的效果。</p>
+          <p>多引擎搜索真的很香！</p>
+        </div>
+      </article>
+    </div>
+  </main>
+  <footer class="relative z-10 border-t border-white/5 py-8">
+    <div class="max-w-6xl mx-auto px-6 text-center text-gray-500 text-sm">© 2026 buer.imoons.cn · 用AI提升效率</div>
+  </footer>
+</body>
+</html>
