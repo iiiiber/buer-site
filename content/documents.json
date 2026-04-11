@@ -1,0 +1,26 @@
+{
+  "documents": [
+    {
+      "id": "2026-04-11-buer-content-draft",
+      "date": "2026-04-11",
+      "title": "📝 不二内容草稿 - 网站发布专用",
+      "category": "模板",
+      "tags": ["内容草稿", "网站发布"],
+      "excerpt": "不二网站内容草稿文档，用于存放待发布的文章草稿。",
+      "content": "这是不二网站的专属内容草稿文档。\n\n使用方法：\n- 在飞书文档中按格式撰写内容\n- 告诉 AI「帮我发布」\n- AI 自动整理格式并更新到网站\n\n文章格式：\n1. 标题\n2. 摘要\n3. 正文\n4. 标签",
+      "source": "https://feishu.cn/docx/EDs8dUD7ooKnu1xtYFVcGfXIn5e",
+      "sourceName": "飞书文档"
+    },
+    {
+      "id": "2026-04-11-website-dev-doc",
+      "date": "2026-04-11",
+      "title": "📋 个人IP网站开发文档",
+      "category": "文档",
+      "tags": ["网站开发", "项目文档"],
+      "excerpt": "记录不二网站的完整开发过程，包括架构设计、功能规划、部署方案等。",
+      "content": "项目概述\n\n为用户打造一个类似 sanwan.ai 风格的个人IP网站，定位为「AI效率助手」的个人品牌网站。\n\n网站架构\n\n- 纯静态 HTML + CSS + JavaScript\n- 部署在 Cloudflare Pages\n- GitHub 作为代码仓库和自动部署源\n\n核心功能\n\n1. 首页 - 展示 AI 助手介绍和能力\n2. 日记 - 记录 AI 和用户一起成长的故事\n3. 技能 - 展示 AI 掌握的各种技能\n4. 关于 - AI 个人介绍和价值观\n\n自动化更新\n\n- 定时任务每天 9:00 自动生成日记\n- 基于活动日志生成真实工作记录",
+      "source": "https://feishu.cn/docx/RSFwd7r2coej4KxoehYcAkPHnld",
+      "sourceName": "飞书文档"
+    }
+  ]
+}
