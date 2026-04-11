@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>文档 | 不二 - AI效率手册</title>
+  <meta name="description" content="不二的文档库，存放通过 AI 生成的各类文档，包括报告、纪要、学习笔记等。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --bg-primary: #030508;
+      --accent-cyan: #00d4aa;
+      --accent-teal: #00b4d8;
+      --accent-gold: #ffd700;
+      --text-primary: #f0f4f8;
+      --text-secondary: #8899aa;
+    }
+    body {
+      font-family: 'Inter', 'Space Grotesk', sans-serif;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      overflow-x: hidden;
+      line-height: 1.7;
+    }
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: var(--bg-primary); }
+    ::-webkit-scrollbar-thumb { background: linear-gradient(var(--accent-cyan), var(--accent-teal)); border-radius: 3px; }
+    
+    .bg-animation { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; pointer-events: none; overflow: hidden; }
+    .orb { position: absolute; border-radius: 50%; filter: blur(100px); animation: float 20s ease-in-out infinite; }
+    .orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, rgba(0,180,216,0.15) 0%, transparent 70%); top: -200px; right: -100px; }
+    .orb-2 { width: 500px; height: 500px; background: radial-gradient(circle, rgba(0,212,170,0.12) 0%, transparent 70%); bottom: -100px; left: -100px; animation-delay: -5s; }
+    @keyframes float {
+      0%, 100% { transform: translate(0, 0) scale(1); }
+      25% { transform: translate(30px, -30px) scale(1.05); }
+      50% { transform: translate(-20px, 20px) scale(0.95); }
+      75% { transform: translate(20px, 30px) scale(1.02); }
+    }
+    .grid-pattern {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background-image: linear-gradient(rgba(0,212,170,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(0,212,170,0.03) 1px, transparent 1px);
+      background-size: 60px 60px; z-index: 1; pointer-events: none;
+    }
+    .content-wrapper { position: relative; z-index: 10; }
+    
+    header {
+      background: rgba(3,5,8,0.8); backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0,212,170,0.1);
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+    }
+    .logo { display: flex; align-items: center; gap: 12px; }
+    .logo-icon {
+      width: 44px; height: 44px;
+      border-radius: 12px; display: flex; align-items: center; justify-content: center;
+      box-shadow: 0 0 30px rgba(0,212,170,0.3);
+    }
+    .logo-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 24px; font-weight: 700;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--text-primary));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .nav-link {
+      position: relative; color: var(--text-secondary);
+      font-size: 14px; font-weight: 500; padding: 8px 0; transition: color 0.3s;
+    }
+    .nav-link::after {
+      content: ''; position: absolute; bottom: 0; left: 0;
+      width: 0; height: 2px;
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-teal));
+      transition: width 0.3s;
+    }
+    .nav-link:hover, .nav-link.active { color: var(--text-primary); }
+    .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+    
+    .page-header {
+      padding: 140px 0 60px;
+      text-align: center;
+    }
+    .page-icon { font-size: 64px; margin-bottom: 20px; }
+    .page-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: clamp(36px, 6vw, 56px); font-weight: 700; margin-bottom: 16px;
+      background: linear-gradient(135deg, var(--accent-cyan), var(--accent-teal));
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    }
+    .page-desc { color: var(--text-secondary); font-size: 16px; max-width: 500px; margin: 0 auto; }
+    
+    .category-filter {
+      display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;
+      margin-bottom: 48px;
+    }
+    .category-btn {
+      padding: 10px 24px; border-radius: 30px; font-size: 14px; font-weight: 500;
+      background: rgba(10,16,21,0.8); border: 1px solid rgba(0,212,170,0.15);
+      color: var(--text-secondary); cursor: pointer; transition: all 0.3s;
+    }
+    .category-btn:hover { border-color: var(--accent-cyan); color: var(--accent-cyan); }
+    .category-btn.active {
+      background: rgba(0,212,170,0.1); border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+    }
+    
+    .doc-card {
+      background: rgba(10,16,21,0.8); border: 1px solid rgba(0,212,170,0.08);
+      border-radius: 20px; padding: 32px;
+      transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative; overflow: hidden;
+      text-decoration: none; display: block;
+    }
+    .doc-card::before {
+      content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 3px;
+      background: linear-gradient(90deg, var(--accent-cyan), var(--accent-teal));
+      transform: scaleX(0); transform-origin: left; transition: transform 0.4s;
+    }
+    .doc-card:hover::before { transform: scaleX(1); }
+    .doc-card:hover {
+      transform: translateY(-8px);
+      border-color: rgba(0,212,170,0.3);
+      box-shadow: 0 20px 60px rgba(0,212,170,0.1);
+    }
+    .doc-icon { font-size: 48px; margin-bottom: 20px; }
+    .doc-meta { display: flex; align-items: center; gap: 12px; margin-bottom: 16px; }
+    .doc-tag {
+      padding: 4px 12px; border-radius: 20px; font-size: 12px;
+      background: rgba(0,212,170,0.1); color: var(--accent-cyan);
+      border: 1px solid rgba(0,212,170,0.2);
+    }
+    .doc-date { font-size: 13px; color: var(--text-secondary); }
+    .doc-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px; font-weight: 600; margin-bottom: 12px;
+      color: var(--text-primary); transition: color 0.3s;
+    }
+    .doc-card:hover .doc-title { color: var(--accent-cyan); }
+    .doc-excerpt { font-size: 14px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 16px; }
+    .doc-footer { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .doc-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .tag {
+      padding: 4px 10px; border-radius: 20px; font-size: 11px;
+      background: rgba(0,212,170,0.05); color: var(--text-secondary);
+      border: 1px solid rgba(0,212,170,0.1);
+    }
+    .doc-source {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-size: 12px; color: var(--accent-cyan);
+      padding: 4px 10px; border-radius: 20px;
+      background: rgba(0,212,170,0.05);
+      border: 1px solid rgba(0,212,170,0.15);
+    }
+    .read-more {
+      display: inline-flex; align-items: center; gap: 6px;
+      color: var(--accent-cyan); font-size: 14px; font-weight: 500;
+    }
+    
+    footer {
+      border-top: 1px solid rgba(0,212,170,0.08); padding: 60px 0 40px; margin-top: 80px;
+    }
+    .footer-logo {
+      font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700;
+      color: var(--accent-cyan); margin-bottom: 20px;
+    }
+    .footer-link { color: var(--text-secondary); font-size: 14px; transition: color 0.3s; }
+    .footer-link:hover { color: var(--accent-cyan); }
+    
+    .empty-state {
+      text-align: center; padding: 80px 20px;
+      color: var(--text-secondary);
+    }
+    .empty-icon { font-size: 64px; margin-bottom: 20px; opacity: 0.5; }
+    
+    @media (max-width: 768px) {
+      .doc-card { padding: 24px; }
+      .doc-title { font-size: 18px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="bg-animation">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+  </div>
+  <div class="grid-pattern"></div>
+  
+  <div class="content-wrapper">
+    <header>
+      <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+        <a href="/" class="logo">
+          <div class="logo-icon">
+            <svg viewBox="0 0 120 120" width="44" height="44" xmlns="http://www.w3.org/2000/svg">
+              <rect width="120" height="120" rx="26" fill="#030508"/>
+              <g transform="translate(60,60)">
+                <rect x="-28" y="-30" width="12" height="60" rx="6" fill="url(#logoGrad)"/>
+                <rect x="-28" y="-30" width="34" height="12" rx="6" fill="url(#logoGrad)"/>
+                <rect x="-14" y="-6" width="22" height="12" rx="6" fill="url(#logoGrad)"/>
+                <rect x="-28" y="18" width="34" height="12" rx="6" fill="url(#logoGrad)"/>
+                <path d="M 16 -24 Q 36 -24 36 -6 Q 36 12 16 12" fill="none" stroke="url(#logoGrad)" stroke-width="12" stroke-linecap="round"/>
+                <line x1="-32" y1="-12" x2="30" y2="38" stroke="url(#logoGrad)" stroke-width="8" stroke-linecap="round"/>
+              </g>
+              <defs>
+                <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#00d4aa"/>
+                  <stop offset="100%" stop-color="#00b4d8"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
+          <span class="logo-text">不二</span>
+        </a>
+        <nav class="flex gap-10">
+          <a href="/" class="nav-link">首页</a>
+          <a href="/diary" class="nav-link">日记</a>
+          <a href="/documents" class="nav-link active">文档</a>
+          <a href="/skills" class="nav-link">技能</a>
+          <a href="/about" class="nav-link">关于</a>
+        </nav>
+      </div>
+    </header>
+        </nav>
+      </div>
+    </header>
+    
+    <section class="page-header">
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="page-icon">📄</div>
+        <h1 class="page-title">文档库</h1>
+        <p class="page-desc">存放通过 AI 生成的各类文档，包括报告、纪要、学习笔记等</p>
+      </div>
+    </section>
+    
+    <section class="pb-20">
+      <div class="max-w-4xl mx-auto px-6">
+        <div class="category-filter">
+          <button class="category-btn active" data-category="all">全部</button>
+          <button class="category-btn" data-category="报告">📊 报告</button>
+          <button class="category-btn" data-category="纪要">📝 纪要</button>
+          <button class="category-btn" data-category="笔记">📚 笔记</button>
+          <button class="category-btn" data-category="模板">📋 模板</button>
+          <button class="category-btn" data-category="文档">📄 文档</button>
+        </div>
+        
+        <div class="grid grid-cols-1 gap-6" id="doc-list">
+          
+          <a href="/documents/2026-04-11-website-dev-doc.html" class="doc-card">
+            <div class="doc-icon">📋</div>
+            <div class="doc-meta">
+              <span class="doc-tag">文档</span>
+              <span class="doc-date">2026-04-11</span>
+            </div>
+            <h2 class="doc-title">个人IP网站开发文档</h2>
+            <p class="doc-excerpt">记录不二网站的完整开发过程，包括架构设计、功能规划、部署方案等。</p>
+            <div class="doc-footer">
+              <div class="doc-tags">
+                <span class="tag">网站开发</span>
+                <span class="tag">项目文档</span>
+              </div>
+              <span class="doc-source">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                飞书文档
+              </span>
+            </div>
+          </a>
+          
+          <a href="/documents/2026-04-11-buer-content-draft.html" class="doc-card">
+            <div class="doc-icon">📝</div>
+            <div class="doc-meta">
+              <span class="doc-tag">模板</span>
+              <span class="doc-date">2026-04-11</span>
+            </div>
+            <h2 class="doc-title">不二内容草稿 - 网站发布专用</h2>
+            <p class="doc-excerpt">不二网站内容草稿文档，用于存放待发布的文章草稿。按格式填写后告诉 AI「帮我发布」即可。</p>
+            <div class="doc-footer">
+              <div class="doc-tags">
+                <span class="tag">内容草稿</span>
+                <span class="tag">网站发布</span>
+              </div>
+              <span class="doc-source">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>
+                飞书文档
+              </span>
+            </div>
+          </a>
+          
+        </div>
+        
+        <div class="empty-state" id="empty-state" style="display:none;">
+          <div class="empty-icon">📭</div>
+          <h3 style="font-size: 20px; margin-bottom: 8px;">暂无文档</h3>
+          <p>生成的文档会显示在这里</p>
+        </div>
+      </div>
+    </section>
+    
+    <footer>
+      <div class="max-w-6xl mx-auto px-6">
+        <div class="flex justify-between items-center flex-wrap gap-6">
+          <div>
+            <div class="footer-logo">⊕ 不二</div>
+            <p style="color: var(--text-secondary); font-size: 14px;">用AI提升效率，让时间更有价值</p>
+          </div>
+          <nav class="flex gap-8">
+            <a href="/" class="footer-link">首页</a>
+            <a href="/diary" class="footer-link">日记</a>
+            <a href="/documents" class="footer-link">文档</a>
+            <a href="/skills" class="footer-link">技能</a>
+            <a href="/about" class="footer-link">关于</a>
+          </nav>
+        </div>
+        <div style="border-top: 1px solid rgba(0,212,170,0.08); margin-top: 40px; padding-top: 24px; text-align: center; color: var(--text-secondary); font-size: 13px;">
+          © 2026 buer.imoons.cn · 用AI提升效率
+        </div>
+      </div>
+    </footer>
+  </div>
+  
+  <script>
+    // Simple category filter
+    document.querySelectorAll('.category-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.category-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        
+        const category = btn.dataset.category;
+        const cards = document.querySelectorAll('.doc-card');
+        let visibleCount = 0;
+        
+        cards.forEach(card => {
+          const tag = card.querySelector('.doc-tag').textContent;
+          if (category === 'all' || tag.includes(category)) {
+            card.style.display = 'block';
+            visibleCount++;
+          } else {
+            card.style.display = 'none';
+          }
+        });
+        
+        document.getElementById('empty-state').style.display = visibleCount === 0 ? 'block' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
