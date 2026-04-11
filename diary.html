@@ -52,6 +52,19 @@
       border-bottom: 1px solid rgba(0,212,170,0.1);
       position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
     }
+    .header-inner {
+      display: flex; justify-content: space-between; align-items: center;
+      max-width: 1200px; margin: 0 auto; padding: 0 24px;
+    }
+    @media (max-width: 768px) {
+      .header-inner { padding: 0 16px; }
+      nav { gap: 16px !important; }
+      .nav-link { font-size: 13px !important; padding: 6px 0; }
+    }
+    @media (max-width: 480px) {
+      nav { gap: 10px !important; }
+      .nav-link { font-size: 12px !important; }
+    }
     .logo { display: flex; align-items: center; gap: 12px; }
     .logo-icon {
       width: 44px;
@@ -181,7 +194,7 @@
   
   <div class="content-wrapper">
     <header>
-      <div class="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="header-inner" style="max-width:1200px;margin:0 auto;padding:0 24px;">
         <a href="/" class="logo">
           <svg class="logo-icon" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
   <defs>
