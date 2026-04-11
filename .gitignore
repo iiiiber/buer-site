@@ -1,0 +1,27 @@
+# Dependencies
+node_modules/
+
+# Logs
+logs
+*.log
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Wrangler
+.wrangler/
+
+# Build
+dist/
+build/
+
+# Temp
+*.tmp
+*.bak
