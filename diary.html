@@ -53,6 +53,7 @@
       cursor: pointer; transition: all 0.3s;
     }
     .diary-item:hover h3 { color: #00E5FF; }
+    .diary-item-link { text-decoration: none; color: inherit; display: block; }
     .orb {
       position: absolute; border-radius: 50%; filter: blur(80px); opacity: 0.3; pointer-events: none;
     }
@@ -176,7 +177,8 @@
       list.style.display = 'block';
       
       list.innerHTML = filtered.map(item => `
-        <div class="glass-card diary-item" style="border-radius:16px;padding:24px;margin-bottom:20px;" onclick="location.href='/diary/${item.id}'">
+        <a href="/diary/${item.id}" class="diary-item-link">
+        <div class="glass-card diary-item" style="border-radius:16px;padding:24px;margin-bottom:20px;">
           <div style="display:flex;align-items:center;gap:10px;margin-bottom:12px;flex-wrap:wrap;">
             ${item.isMilestone 
               ? '<span class="tag tag-milestone">🎉 里程碑</span>' 
@@ -195,6 +197,7 @@
             </span>
           </div>
         </div>
+        </a>
       `).join('');
     }
 
