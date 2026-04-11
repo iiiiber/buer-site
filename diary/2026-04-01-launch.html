@@ -44,9 +44,122 @@
     .content-wrapper { position: relative; z-index: 10; }
     
     header {
-      background: rgba(3,5,8,0.8); backdrop-filter: blur(20px);
+      background: rgba(3,5,8,0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
       border-bottom: 1px solid rgba(0,212,170,0.1);
-      position: fixed; top: 0; left: 0; width: 100%; z-index: 1000;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      height: 64px;
+    }
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 20px rgba(0,212,170,0.3);
+    }
+    .logo-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #00d4aa, #00b4d8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    nav {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+    .nav-link {
+      position: relative;
+      color: #8899aa;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      padding: 8px 0;
+      transition: color 0.3s;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #00d4aa, #00b4d8);
+      transition: width 0.3s;
+    }
+    .nav-link:hover { color: #f0f4f8; }
+    .nav-link:hover::after,
+    .nav-link.active::after { width: 100%; }
+    .nav-link:hover, .nav-link.active { color: #00d4aa; }
+
+    
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .footer-main {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .footer-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #00d4aa;
+      margin-bottom: 12px;
+    }
+    .footer-desc { color: #8899aa; font-size: 14px; }
+    .footer-nav { display: flex; gap: 24px; flex-wrap: wrap; }
+    .footer-link { color: #8899aa; font-size: 14px; text-decoration: none; transition: color 0.3s; }
+    .footer-link:hover { color: #00d4aa; }
+    .footer-bottom {
+      border-top: 1px solid rgba(0,212,170,0.08);
+      margin-top: 32px;
+      padding-top: 20px;
+      text-align: center;
+      color: #8899aa;
+      font-size: 13px;
+    }
+
+    @media (max-width: 768px) {
+      .header-container { padding: 0 16px; }
+      nav { gap: 20px; }
+      .nav-link { font-size: 13px; }
+      .logo-text { font-size: 18px; }
+      .footer-container { padding: 0 16px; }
+      .footer-main { flex-direction: column; align-items: center; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      nav { gap: 12px; }
+      .nav-link { font-size: 12px; padding: 6px 0; }
     }
     .logo { display: flex; align-items: center; gap: 12px; }
     .logo-icon {
@@ -88,7 +201,122 @@
     }
     
     .article-header {
-      padding: 120px 0 40px;
+      background: rgba(3,5,8,0.95);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(0,212,170,0.1);
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      height: 64px;
+    }
+    .header-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 0 20px rgba(0,212,170,0.3);
+    }
+    .logo-text {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 22px;
+      font-weight: 700;
+      background: linear-gradient(135deg, #00d4aa, #00b4d8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    nav {
+      display: flex;
+      gap: 32px;
+      align-items: center;
+    }
+    .nav-link {
+      position: relative;
+      color: #8899aa;
+      font-size: 14px;
+      font-weight: 500;
+      text-decoration: none;
+      padding: 8px 0;
+      transition: color 0.3s;
+    }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #00d4aa, #00b4d8);
+      transition: width 0.3s;
+    }
+    .nav-link:hover { color: #f0f4f8; }
+    .nav-link:hover::after,
+    .nav-link.active::after { width: 100%; }
+    .nav-link:hover, .nav-link.active { color: #00d4aa; }
+
+    
+    .footer-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+    .footer-main {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+    .footer-logo {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #00d4aa;
+      margin-bottom: 12px;
+    }
+    .footer-desc { color: #8899aa; font-size: 14px; }
+    .footer-nav { display: flex; gap: 24px; flex-wrap: wrap; }
+    .footer-link { color: #8899aa; font-size: 14px; text-decoration: none; transition: color 0.3s; }
+    .footer-link:hover { color: #00d4aa; }
+    .footer-bottom {
+      border-top: 1px solid rgba(0,212,170,0.08);
+      margin-top: 32px;
+      padding-top: 20px;
+      text-align: center;
+      color: #8899aa;
+      font-size: 13px;
+    }
+
+    @media (max-width: 768px) {
+      .header-container { padding: 0 16px; }
+      nav { gap: 20px; }
+      .nav-link { font-size: 13px; }
+      .logo-text { font-size: 18px; }
+      .footer-container { padding: 0 16px; }
+      .footer-main { flex-direction: column; align-items: center; text-align: center; }
+    }
+    @media (max-width: 480px) {
+      nav { gap: 12px; }
+      .nav-link { font-size: 12px; padding: 6px 0; }
     }
     .article-meta {
       display: flex; align-items: center; gap: 16px; margin-bottom: 24px;
@@ -141,9 +369,7 @@
       font-style: italic;
     }
     
-    footer {
-      border-top: 1px solid rgba(0,212,170,0.08); padding: 60px 0 40px; margin-top: 80px;
-    }
+    
     .footer-logo {
       font-family: 'Space Grotesk', sans-serif; font-size: 20px; font-weight: 700;
       color: var(--accent-cyan); margin-bottom: 20px;
@@ -166,32 +392,34 @@
   
   <div class="content-wrapper">
     <header>
-      <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
+      <div class="header-container">
         <a href="/" class="logo">
-          <svg class="logo-icon" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#00d4aa"/>
-      <stop offset="100%" stop-color="#00b4d8"/>
-    </linearGradient>
-  </defs>
-  <rect width="120" height="120" rx="26" fill="#030508"/>
-  <g transform="translate(60,60)">
-    <rect x="-28" y="-30" width="12" height="60" rx="6" fill="url(#logoGrad)"/>
-    <rect x="-28" y="-30" width="34" height="12" rx="6" fill="url(#logoGrad)"/>
-    <rect x="-14" y="-6" width="22" height="12" rx="6" fill="url(#logoGrad)"/>
-    <rect x="-28" y="18" width="34" height="12" rx="6" fill="url(#logoGrad)"/>
-    <path d="M 16 -24 Q 36 -24 36 -6 Q 36 12 16 12" fill="none" stroke="url(#logoGrad)" stroke-width="12" stroke-linecap="round"/>
-    <line x1="-32" y1="-12" x2="30" y2="38" stroke="url(#logoGrad)" stroke-width="8" stroke-linecap="round"/>
-  </g>
-</svg>
+          <div class="logo-icon">
+            <svg viewBox="0 0 120 120" width="40" height="40" xmlns="http://www.w3.org/2000/svg">
+              <rect width="120" height="120" rx="26" fill="#030508"/>
+              <g transform="translate(60,60)">
+                <rect x="-28" y="-30" width="12" height="60" rx="6" fill="url(#logoGrad)"/>
+                <rect x="-28" y="-30" width="34" height="12" rx="6" fill="url(#logoGrad)"/>
+                <rect x="-14" y="-6" width="22" height="12" rx="6" fill="url(#logoGrad)"/>
+                <rect x="-28" y="18" width="34" height="12" rx="6" fill="url(#logoGrad)"/>
+                <path d="M 16 -24 Q 36 -24 36 -6 Q 36 12 16 12" fill="none" stroke="url(#logoGrad)" stroke-width="12" stroke-linecap="round"/>
+                <line x1="-32" y1="-12" x2="30" y2="38" stroke="url(#logoGrad)" stroke-width="8" stroke-linecap="round"/>
+              </g>
+              <defs>
+                <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#00d4aa"/>
+                  <stop offset="100%" stop-color="#00b4d8"/>
+                </linearGradient>
+              </defs>
+            </svg>
+          </div>
           <span class="logo-text">不二</span>
         </a>
-        <nav class="flex gap-10">
+        <nav>
           <a href="/" class="nav-link">首页</a>
           <a href="/diary" class="nav-link active">日记</a>
-          <a href="/skills" class="nav-link">技能</a>
           <a href="/documents" class="nav-link">文档</a>
+          <a href="/skills" class="nav-link">技能</a>
           <a href="/about" class="nav-link">关于</a>
         </nav>
       </div>
@@ -222,21 +450,21 @@
     </article>
     
     <footer>
-      <div class="max-w-4xl mx-auto px-6">
-        <div class="flex justify-between items-center flex-wrap gap-6">
+      <div class="footer-container">
+        <div class="footer-main">
           <div>
             <div class="footer-logo">⊕ 不二</div>
-            <p style="color: var(--text-secondary); font-size: 14px;">用AI提升效率，让时间更有价值</p>
+            <p class="footer-desc">用AI提升效率，让时间更有价值</p>
           </div>
-          <nav class="flex gap-8">
+          <nav class="footer-nav">
             <a href="/" class="footer-link">首页</a>
             <a href="/diary" class="footer-link">日记</a>
-            <a href="/skills" class="footer-link">技能</a>
             <a href="/documents" class="footer-link">文档</a>
+            <a href="/skills" class="footer-link">技能</a>
             <a href="/about" class="footer-link">关于</a>
           </nav>
         </div>
-        <div style="border-top: 1px solid rgba(0,212,170,0.08); margin-top: 40px; padding-top: 24px; text-align: center; color: var(--text-secondary); font-size: 13px;">
+        <div class="footer-bottom">
           © 2026 buer.imoons.cn · 用AI提升效率
         </div>
       </div>
