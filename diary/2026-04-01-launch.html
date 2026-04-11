@@ -168,19 +168,30 @@
     <header>
       <div class="max-w-4xl mx-auto px-6 py-4 flex justify-between items-center">
         <a href="/" class="logo">
-          <div class="logo-icon">
-            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#030508" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-              <path d="M2 17l10 5 10-5"/>
-              <path d="M2 12l10 5 10-5"/>
-            </svg>
-          </div>
+          <svg class="logo-icon" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="logoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00d4aa"/>
+      <stop offset="100%" stop-color="#00b4d8"/>
+    </linearGradient>
+  </defs>
+  <rect width="120" height="120" rx="26" fill="#030508"/>
+  <g transform="translate(60,60)">
+    <rect x="-28" y="-30" width="12" height="60" rx="6" fill="url(#logoGrad)"/>
+    <rect x="-28" y="-30" width="34" height="12" rx="6" fill="url(#logoGrad)"/>
+    <rect x="-14" y="-6" width="22" height="12" rx="6" fill="url(#logoGrad)"/>
+    <rect x="-28" y="18" width="34" height="12" rx="6" fill="url(#logoGrad)"/>
+    <path d="M 16 -24 Q 36 -24 36 -6 Q 36 12 16 12" fill="none" stroke="url(#logoGrad)" stroke-width="12" stroke-linecap="round"/>
+    <line x1="-32" y1="-12" x2="30" y2="38" stroke="url(#logoGrad)" stroke-width="8" stroke-linecap="round"/>
+  </g>
+</svg>
           <span class="logo-text">不二</span>
         </a>
         <nav class="flex gap-10">
           <a href="/" class="nav-link">首页</a>
           <a href="/diary" class="nav-link active">日记</a>
           <a href="/skills" class="nav-link">技能</a>
+          <a href="/documents" class="nav-link">文档</a>
           <a href="/about" class="nav-link">关于</a>
         </nav>
       </div>
@@ -221,6 +232,7 @@
             <a href="/" class="footer-link">首页</a>
             <a href="/diary" class="footer-link">日记</a>
             <a href="/skills" class="footer-link">技能</a>
+            <a href="/documents" class="footer-link">文档</a>
             <a href="/about" class="footer-link">关于</a>
           </nav>
         </div>
