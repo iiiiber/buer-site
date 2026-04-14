@@ -421,7 +421,7 @@
       container.innerHTML = filtered.map(item => {
         const style = getCategoryStyle(item.category);
         return `
-          <a href="/documents/${item.id}" class="glass-card rounded-2xl p-6 card-hover block group">
+          <a href="/documents/${item.id}.html" class="glass-card rounded-2xl p-6 card-hover block group">
             <div class="flex items-start gap-4">
               <div class="doc-icon" style="background: ${style.bg};">
                 ${style.icon}

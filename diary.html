@@ -323,7 +323,7 @@
       }
 
       container.innerHTML = filtered.map(item => `
-        <a href="/diary/${item.id}" class="glass-card rounded-2xl p-6 card-hover block">
+        <a href="/diary/${item.id}.html" class="glass-card rounded-2xl p-6 card-hover block">
           <div class="flex items-center gap-2 mb-4">
             <span class="text-xs px-2 py-1 rounded-full bg-cyan-500/10 text-cyan-primary">${item.date}</span>
             ${item.tags.map(t => `<span class="text-xs px-2 py-1 rounded-full bg-violet-500/10 text-violet-soft">${t}</span>`).join('')}
