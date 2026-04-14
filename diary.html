@@ -28,15 +28,20 @@
     .card-hover { transition: all 0.3s; }
     .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
     .tag-active { background: rgba(0, 229, 255, 0.15) !important; color: #00E5FF !important; border-color: rgba(0, 229, 255, 0.3) !important; }
-    /* Mobile Navigation */
+        /* Mobile Navigation - single line, right aligned */
     @media (max-width: 768px) {
       .desktop-nav {
         gap: 0;
+        flex-wrap: nowrap;
+        justify-content: flex-end;
+        overflow: hidden;
       }
       .desktop-nav .nav-link {
-        font-size: 0.8rem;
-        padding: 0.25rem 0.5rem;
+        font-size: 0.75rem;
+        padding: 0.2rem 0.4rem;
+        white-space: nowrap;
       }
+    }
     }
   </style>
 </head>
