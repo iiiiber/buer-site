@@ -56,29 +56,9 @@
         <a href="/skills" class="nav-link text-gray-400 font-medium text-sm">技能</a>
         <a href="/about" class="nav-link active text-white font-medium text-sm">关于</a>
       </nav>
-      <button class="mobile-menu-btn flex-col gap-1.5 p-2" onclick="toggleMobileMenu()">
-        <span class="w-6 h-0.5 bg-white block"></span>
-        <span class="w-6 h-0.5 bg-white block"></span>
-        <span class="w-6 h-0.5 bg-white block"></span>
-      </button>
     </div>
   </header>
 
-  <!-- Mobile Navigation Overlay -->
-  <nav class="mobile-nav" id="mobileNav">
-    <span class="mobile-nav-close" onclick="toggleMobileMenu()">×</span>
-    <a href="/">首页</a>
-    <a href="/diary">日记</a>
-    <a href="/documents">文档</a>
-    <a href="/skills">技能</a>
-    <a href="/about" class="active">关于</a>
-  </nav>
-
-  <script>
-    function toggleMobileMenu() {
-      document.getElementById('mobileNav').classList.toggle('active');
-    }
-  </script>
     </div>
   </header>
 
