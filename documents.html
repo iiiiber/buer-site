@@ -18,16 +18,18 @@
     ::-webkit-scrollbar-track { background: #0a0a12; }
     ::-webkit-scrollbar-thumb { background: #8B5CF6; border-radius: 3px; }
     .grid-bg { background-image: linear-gradient(rgba(139,92,246,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(139,92,246,0.03) 1px, transparent 1px); background-size: 48px 48px; }
-    .glass-card { background: rgba(17, 17, 32, 0.6); backdrop-filter: blur(20px); border: 1px solid rgba(139, 92, 246, 0.15); }
+    .glass-card { background: rgba(17, 17, 32, 0.7); backdrop-filter: blur(24px); border: 1px solid rgba(139, 92, 246, 0.15); }
     .nav-link { position: relative; transition: color 0.2s; }
     .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, #00E5FF, #8B5CF6); transition: width 0.3s; }
     .nav-link:hover::after, .nav-link.active::after { width: 100%; }
     .nav-link:hover, .nav-link.active { color: #00E5FF; }
     .orb { position: absolute; border-radius: 50%; filter: blur(80px); pointer-events: none; animation: pulse-glow 8s ease-in-out infinite; }
     @keyframes pulse-glow { 0%, 100% { opacity: 0.3; } 50% { opacity: 0.5; } }
-    .card-hover { transition: all 0.3s; }
-    .card-hover:hover { transform: translateY(-4px); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
-    .tag-active { background: rgba(0, 229, 255, 0.15) !important; color: #00E5FF !important; border-color: rgba(0, 229, 255, 0.3) !important; }
+    .card-hover { transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
+    .card-hover:hover { transform: translateY(-6px); border-color: rgba(0, 229, 255, 0.3); box-shadow: 0 24px 48px rgba(0,0,0,0.4), 0 0 60px rgba(139,92,246,0.08); }
+    .tag-active { background: rgba(0, 229, 255, 0.15) !important; color: #00E5FF !important; border-color: rgba(0, 229, 255, 0.4) !important; }
+    .doc-icon { width: 48px; height: 48px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 22px; flex-shrink: 0; }
+    .category-dot { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
     /* Mobile Menu */
     .mobile-menu-btn { display: none; }
     .mobile-nav { display: none; }
@@ -111,37 +113,47 @@
       document.getElementById('mobileNav').classList.toggle('active');
     }
   </script>
-    </div>
-  </header>
 
   <main class="relative z-10 pt-28 pb-20">
-    <div class="max-w-6xl mx-auto px-6">
-      <div class="text-center mb-12">
-        <h1 class="text-4xl font-bold mb-4">📄 文档中心</h1>
+    <div class="max-w-5xl mx-auto px-6">
+
+      <!-- Page Header -->
+      <div class="text-center mb-10">
+        <h1 class="text-4xl font-bold mb-3">📄 文档中心</h1>
         <p class="text-gray-400">存放通过 AI 生成的各类文档，实现知识沉淀</p>
       </div>
 
-      <!-- Filter Tags -->
-      <div class="flex items-center justify-center gap-3 mb-12 flex-wrap" id="filter-tags">
-        <button class="tag-btn tag-active px-4 py-2 rounded-full bg-white/5 border border-white/10 text-gray-400 text-sm transition-all" data-tag="全部">全部</button>
-        <button class="tag-btn px-4 py-2 rounded-full bg-white/5 border border-white/10 text-gray-400 text-sm transition-all hover:border-cyan-500/30" data-tag="报告">报告</button>
-        <button class="tag-btn px-4 py-2 rounded-full bg-white/5 border border-white/10 text-gray-400 text-sm transition-all hover:border-cyan-500/30" data-tag="纪要">纪要</button>
-        <button class="tag-btn px-4 py-2 rounded-full bg-white/5 border border-white/10 text-gray-400 text-sm transition-all hover:border-cyan-500/30" data-tag="笔记">笔记</button>
-        <button class="tag-btn px-4 py-2 rounded-full bg-white/5 border border-white/10 text-gray-400 text-sm transition-all hover:border-cyan-500/30" data-tag="模板">模板</button>
-        <button class="tag-btn px-4 py-2 rounded-full bg-white/5 border border-white/10 text-gray-400 text-sm transition-all hover:border-cyan-500/30" data-tag="其他">其他</button>
+      <!-- Stats Bar -->
+      <div class="flex items-center justify-center gap-6 mb-8" id="stats-bar">
+        <div class="flex items-center gap-2 text-sm text-gray-400">
+          <span class="w-2 h-2 rounded-full bg-cyan-400"></span>
+          <span>全部 <span class="text-white font-semibold" id="total-count">0</span></span>
+        </div>
       </div>
 
-      <!-- Source Badge -->
-      <div class="flex items-center justify-center mb-8">
-        <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-cyan-500/10 border border-cyan-500/20 text-cyan-primary text-xs">
-          📌 来源：飞书文档
-        </span>
+      <!-- Filter Tags -->
+      <div class="flex items-center justify-center gap-2 mb-10 flex-wrap" id="filter-tags">
+        <button class="tag-btn tag-active px-5 py-2 rounded-full bg-white/5 border border-white/10 text-gray-400 text-sm transition-all cursor-pointer" data-tag="全部">全部</button>
+      </div>
+
+      <!-- Divider -->
+      <div class="flex items-center gap-4 mb-8">
+        <div class="flex-1 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
+        <span class="text-xs text-gray-600">点击卡片查看详情</span>
+        <div class="flex-1 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent"></div>
       </div>
 
       <!-- Documents List -->
-      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="docs-list">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5" id="docs-list">
         <!-- Loaded via JS -->
       </div>
+
+      <!-- Empty State -->
+      <div id="empty-state" class="hidden text-center py-20">
+        <div class="text-5xl mb-4">📭</div>
+        <p class="text-gray-500">暂无文档</p>
+      </div>
+
     </div>
   </main>
 
@@ -164,6 +176,46 @@
   </footer>
 
   <script>
+    const CATEGORY_ICONS = {
+      '测试报告': { bg: 'rgba(239,68,68,0.15)', icon: '🔬' },
+      '工具指南': { bg: 'rgba(34,197,94,0.15)', icon: '📊' },
+      '模板': { bg: 'rgba(139,92,246,0.15)', icon: '📋' },
+      '笔记': { bg: 'rgba(0,229,255,0.15)', icon: '📝' },
+      '报告': { bg: 'rgba(245,158,11,0.15)', icon: '📄' },
+      '纪要': { bg: 'rgba(168,85,247,0.15)', icon: '📌' },
+      '其他': { bg: 'rgba(107,114,128,0.15)', icon: '📁' }
+    };
+
+    const DEFAULT_ICON = { bg: 'rgba(139,92,246,0.15)', icon: '📄' };
+
+    function getCategoryStyle(category) {
+      return CATEGORY_ICONS[category] || DEFAULT_ICON;
+    }
+
+    function buildFilterTags(docs) {
+      const categories = [...new Set(docs.map(d => d.category))];
+      const container = document.getElementById('filter-tags');
+      container.innerHTML = `
+        <button class="tag-btn tag-active px-5 py-2 rounded-full bg-white/5 border border-white/10 text-gray-400 text-sm transition-all cursor-pointer" data-tag="全部">全部</button>
+        ${categories.map(cat => `
+          <button class="tag-btn px-5 py-2 rounded-full bg-white/5 border border-white/10 text-gray-400 text-sm transition-all hover:border-cyan-500/30 cursor-pointer" data-tag="${cat}">${cat}</button>
+        `).join('')}
+      `;
+      container.querySelectorAll('.tag-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('.tag-btn').forEach(b => b.classList.remove('tag-active'));
+          btn.classList.add('tag-active');
+          currentTag = btn.dataset.tag;
+          renderDocs();
+        });
+      });
+    }
+
+    function buildStatsBar(docs) {
+      const total = docs.length;
+      document.getElementById('total-count').textContent = total;
+    }
+
     let allDocs = [];
     let currentTag = '全部';
 
@@ -172,42 +224,54 @@
         const res = await fetch('/content/documents.json');
         const data = await res.json();
         allDocs = data.documents;
+        buildStatsBar(allDocs);
+        buildFilterTags(allDocs);
         renderDocs();
       } catch (e) {
-        document.getElementById('docs-list').innerHTML = '<p class="col-span-3 text-center text-gray-500">暂无文档</p>';
+        document.getElementById('docs-list').classList.add('hidden');
+        document.getElementById('empty-state').classList.remove('hidden');
       }
     }
 
     function renderDocs() {
       const filtered = currentTag === '全部' ? allDocs : allDocs.filter(d => d.category === currentTag);
       const container = document.getElementById('docs-list');
-      
+      const emptyState = document.getElementById('empty-state');
+
       if (filtered.length === 0) {
-        container.innerHTML = '<p class="col-span-3 text-center text-gray-500">暂无文档</p>';
+        container.classList.add('hidden');
+        emptyState.classList.remove('hidden');
         return;
       }
 
-      container.innerHTML = filtered.map(item => `
-        <a href="/documents/${item.id}" class="glass-card rounded-2xl p-6 card-hover block">
-          <div class="flex items-center gap-2 mb-4">
-            <span class="text-xs px-2 py-1 rounded-full bg-cyan-500/10 text-cyan-primary">${item.date}</span>
-            <span class="text-xs px-2 py-1 rounded-full bg-violet-500/10 text-violet-soft">${item.category}</span>
-          </div>
-          <h3 class="font-semibold text-lg text-white mb-2">${item.title}</h3>
-          <p class="text-gray-400 text-sm line-clamp-3">${item.excerpt}</p>
-          ${item.feishuUrl ? `<a href="${item.feishuUrl}" target="_blank" class="mt-4 inline-flex items-center gap-1 text-xs text-cyan-primary hover:underline" onclick="event.stopPropagation()">📎 查看原文档 →</a>` : ''}
-        </a>
-      `).join('');
-    }
+      container.classList.remove('hidden');
+      emptyState.classList.add('hidden');
 
-    document.querySelectorAll('.tag-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.querySelectorAll('.tag-btn').forEach(b => b.classList.remove('tag-active'));
-        btn.classList.add('tag-active');
-        currentTag = btn.dataset.tag;
-        renderDocs();
-      });
-    });
+      container.innerHTML = filtered.map(item => {
+        const style = getCategoryStyle(item.category);
+        return `
+          <a href="/documents/${item.id}" class="glass-card rounded-2xl p-6 card-hover block group">
+            <div class="flex items-start gap-4">
+              <div class="doc-icon" style="background: ${style.bg};">
+                ${style.icon}
+              </div>
+              <div class="flex-1 min-w-0">
+                <div class="flex items-center gap-2 mb-3 flex-wrap">
+                  <span class="text-xs px-2 py-0.5 rounded-full bg-cyan-500/10 text-cyan-primary">${item.date}</span>
+                  <span class="text-xs px-2 py-0.5 rounded-full bg-white/5 text-gray-400 border border-white/10">${item.category}</span>
+                </div>
+                <h3 class="font-semibold text-lg text-white mb-2 group-hover:text-cyan-300 transition-colors leading-snug">${item.title}</h3>
+                <p class="text-gray-400 text-sm leading-relaxed line-clamp-2">${item.excerpt}</p>
+              </div>
+            </div>
+            <div class="mt-4 pt-4 border-t border-white/5 flex items-center justify-between">
+              <span class="text-xs text-gray-500">点击阅读全文</span>
+              ${item.feishuUrl ? `<a href="${item.feishuUrl}" target="_blank" class="inline-flex items-center gap-1 text-xs text-cyan-primary hover:text-cyan-300 transition-colors" onclick="event.stopPropagation()">📎 飞书原文 →</a>` : ''}
+            </div>
+          </a>
+        `;
+      }).join('');
+    }
 
     loadDocs();
   </script>
