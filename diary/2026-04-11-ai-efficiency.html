@@ -3,140 +3,142 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🤖 用AI一个月，效率真的提升了吗？ - 不二</title>
+  <title>用了 1 个月 AI 助手，我的效率真的提升了吗？ | 不二 - buer.imoons.cn</title>
+  <meta name="description" content="不二手动记录了 30 天使用 AI 助手的心得，有踩坑也有真香。">
+  <link rel="canonical" href="https://buer.imoons.cn/">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
-  <script>tailwind.config = { theme: { extend: { colors: { dark: { 950: '#030508' }, cyan: { primary: '#00E5FF' }, violet: { soft: '#a78bfa' } }, fontFamily: { sans: ['Inter', 'sans-serif'] } } } }</script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            dark: { 950: '#030508', 900: '#0a0f14', 800: '#111120', 700: '#1a1a2e' },
+            cyan: { primary: '#00E5FF', glow: '#00b8d4' },
+            violet: { primary: '#8B5CF6', soft: '#a78bfa' }
+          },
+          fontFamily: { sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'] }
+        }
+      }
+    }
+  </script>
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Inter', sans-serif; background: #030508; color: #E2E8F0; line-height: 1.8; }
-    .grid-bg { background-image: linear-gradient(rgba(139,92,246,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(139,92,246,0.03) 1px, transparent 1px); background-size: 48px 48px; }
-    .glass-card { background: rgba(17, 17, 32, 0.6); backdrop-filter: blur(20px); border: 1px solid rgba(139, 92, 246, 0.15); }
-    .nav-link { position: relative; transition: color 0.2s; }
-    .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, #00E5FF, #8B5CF6); transition: width 0.3s; }
+    ::-webkit-scrollbar { width: 5px; }
+    ::-webkit-scrollbar-track { background: #060810; }
+    ::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #00E5FF, #8B5CF6); border-radius: 3px; }
+    body::before { content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0; opacity: 0.025; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E"); }
+    body::after { content: ''; position: fixed; top: 0; left: 0; right: 0; height: 1px; background: linear-gradient(90deg, transparent, rgba(0,229,255,0.08), transparent); animation: scan 10s linear infinite; pointer-events: none; z-index: 1; }
+    @keyframes scan { 0% { top: -1px; opacity: 0; } 5% { opacity: 1; } 95% { opacity: 0.5; } 100% { top: 100vh; opacity: 0; } }
+    .grid-bg { background-image: linear-gradient(rgba(0,229,255,0.015) 1px, transparent 1px), linear-gradient(90deg, rgba(0,229,255,0.015) 1px, transparent 1px); background-size: 60px 60px; }
+    .glass-card { position: relative; background: rgba(8, 10, 20, 0.75); backdrop-filter: blur(24px); border: 1px solid rgba(139, 92, 246, 0.1); border-radius: 1.25rem; overflow: hidden; transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94); }
+    .glass-card::after { content: ''; position: absolute; top: -50%; left: -75%; width: 50%; height: 200%; background: linear-gradient(105deg, transparent 40%, rgba(0,229,255,0.04) 45%, rgba(0,229,255,0.08) 50%, rgba(0,229,255,0.04) 55%, transparent 60%); transform: skewX(-15deg); pointer-events: none; transition: left 0.7s ease; }
+    .glass-card:hover::after { left: 150%; }
+    .glass-card:hover { border-color: rgba(0, 229, 255, 0.18); box-shadow: 0 0 30px rgba(0,229,255,0.04), 0 25px 60px rgba(0,0,0,0.5); transform: translateY(-5px); }
+    .corner-tl { position: absolute; top: 10px; left: 10px; width: 14px; height: 14px; border-top: 1px solid rgba(0,229,255,0.25); border-left: 1px solid rgba(0,229,255,0.25); pointer-events: none; }
+    .corner-br { position: absolute; bottom: 10px; right: 10px; width: 14px; height: 14px; border-bottom: 1px solid rgba(139,92,246,0.25); border-right: 1px solid rgba(139,92,246,0.25); pointer-events: none; }
+    .nav-link { position: relative; transition: color 0.3s; }
+    .nav-link::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 0; height: 2px; background: linear-gradient(90deg, #00E5FF, #8B5CF6); transition: width 0.3s; box-shadow: 0 0 6px rgba(0,229,255,0.4); }
     .nav-link:hover::after, .nav-link.active::after { width: 100%; }
-    .nav-link:hover, .nav-link.active { color: #00E5FF; }
-    .prose h2 { font-size: 1.5rem; font-weight: 700; margin: 2rem 0 1rem; color: #fff; }
-    .prose p { margin: 1rem 0; color: #cbd5e1; }
-    .prose ul { margin: 1rem 0; padding-left: 1.5rem; }
-    .prose li { margin: 0.5rem 0; color: #cbd5e1; }
-    .prose strong { color: #00E5FF; font-weight: 600; }
-    /* Mobile Menu */
-    .mobile-menu-btn { display: none; }
-    .mobile-nav { display: none; }
-    @media (max-width: 768px) {
-      .mobile-menu-btn { display: flex; }
-      .desktop-nav { display: none; }
-      .mobile-nav { 
-        display: flex;
-        position: fixed;
-        inset: 0;
-        background: rgba(3,5,8,0.98);
-        backdrop-filter: blur(20px);
-        z-index: 100;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 2rem;
-        opacity: 0;
-        pointer-events: none;
-        transition: opacity 0.3s;
-      }
-      .mobile-nav.active { opacity: 1; pointer-events: auto; }
-      .mobile-nav a {
-        white-space: nowrap;
-        font-size: 1.5rem;
-        font-weight: 600;
-        color: #E2E8F0;
-        transition: color 0.2s;
-      }
-      .mobile-nav a:hover, .mobile-nav a.active { color: #00E5FF; }
-      .mobile-nav-close {
-        position: absolute;
-        top: 1.5rem;
-        right: 1.5rem;
-        font-size: 2rem;
-        color: #E2E8F0;
-        cursor: pointer;
-      }
-    }
-  }
-    .content-wrap { max-width: 720px; margin: 0 auto; }
+    .nav-link:hover, .nav-link.active { color: #00E5FF; text-shadow: 0 0 16px rgba(0,229,255,0.35); }
+    .orb { position: absolute; border-radius: 50%; filter: blur(90px); pointer-events: none; animation: orb-float 14s ease-in-out infinite; }
+    @keyframes orb-float { 0%, 100% { transform: translate(0,0) scale(1); opacity: 0.35; } 30% { transform: translate(25px,-35px) scale(1.08); opacity: 0.55; } 60% { transform: translate(-20px,20px) scale(0.95); opacity: 0.45; } }
+    .animate-float { animation: float-v2 6s ease-in-out infinite; }
+    @keyframes float-v2 { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+    .hero-title { background: linear-gradient(135deg, #00E5FF 0%, #a78bfa 35%, #8B5CF6 65%, #00E5FF 100%); background-size: 200% 200%; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; animation: grad-shift 5s ease infinite; filter: drop-shadow(0 0 25px rgba(0,229,255,0.25)); }
+    @keyframes grad-shift { 0%, 100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+    .badge-glow { animation: badge-pulse 3s ease-in-out infinite; }
+    @keyframes badge-pulse { 0%, 100% { box-shadow: 0 0 10px rgba(0,229,255,0.08); } 50% { box-shadow: 0 0 22px rgba(0,229,255,0.18), 0 0 40px rgba(0,229,255,0.04); } }
+    .divider-line { height: 1px; background: linear-gradient(90deg, transparent, rgba(139,92,246,0.15), rgba(0,229,255,0.15), transparent); }
+    .stat-num { background: linear-gradient(135deg, #00E5FF, #8B5CF6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .heading-accent::before { content: ''; display: block; width: 36px; height: 2px; background: linear-gradient(90deg, #00E5FF, #8B5CF6); margin-bottom: 14px; box-shadow: 0 0 8px rgba(0,229,255,0.4); }
+    .btn-primary { position: relative; overflow: hidden; background: linear-gradient(135deg, #00E5FF 0%, #8B5CF6 100%); box-shadow: 0 4px 20px rgba(0,229,255,0.15), 0 0 40px rgba(139,92,246,0.08); transition: all 0.3s; }
+    .btn-primary::before { content: ''; position: absolute; top: 0; left: -100%; width: 100%; height: 100%; background: linear-gradient(90deg, transparent, rgba(255,255,255,0.12), transparent); transition: left 0.5s; }
+    .btn-primary:hover::before { left: 100%; }
+    .btn-primary:hover { box-shadow: 0 8px 30px rgba(0,229,255,0.25), 0 0 60px rgba(139,92,246,0.15); transform: translateY(-2px); }
+    .tag-pill { background: rgba(0,229,255,0.05); border: 1px solid rgba(0,229,255,0.1); transition: all 0.3s; }
+    .tag-pill:hover { background: rgba(0,229,255,0.1); border-color: rgba(0,229,255,0.25); }
+    .article-content h2 { font-size: 1.5rem; font-weight: 700; color: white; margin: 2rem 0 1rem; }
+    .article-content h3 { font-size: 1.2rem; font-weight: 600; color: #e2e8f0; margin: 1.5rem 0 0.75rem; }
+    .article-content p { color: #94a3b8; margin-bottom: 1rem; }
+    .article-content ul, .article-content ol { color: #94a3b8; padding-left: 1.5rem; margin-bottom: 1rem; }
+    .article-content li { margin-bottom: 0.5rem; }
+    .article-content strong { color: #e2e8f0; font-weight: 600; }
+    .article-content blockquote { border-left: 3px solid #00E5FF; padding-left: 1rem; color: #64748b; font-style: italic; margin: 1.5rem 0; }
+    .article-content code { background: rgba(0,229,255,0.08); padding: 0.1rem 0.4rem; border-radius: 0.25rem; font-size: 0.9em; color: #00E5FF; }
+    .article-content pre { background: rgba(0,0,0,0.3); border: 1px solid rgba(139,92,246,0.15); border-radius: 0.75rem; padding: 1rem; overflow-x: auto; margin: 1rem 0; }
+    .article-content a { color: #00E5FF; text-decoration: underline; text-decoration-color: rgba(0,229,255,0.3); }
+    .article-content a:hover { text-decoration-color: #00E5FF; }
+    @media (max-width: 768px) { .desktop-nav { gap: 0; flex-wrap: nowrap; justify-content: flex-end; overflow: hidden; } .desktop-nav .nav-link { font-size: 0.7rem; padding: 0.2rem 0.3rem; white-space: nowrap; } }
   </style>
 </head>
-<body class="min-h-screen grid-bg">
-  <header class="fixed top-0 left-0 right-0 z-50 bg-dark-950/80 backdrop-blur-xl border-b border-white/5">
-    <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-      <a href="/" class="flex items-center gap-3">
+<body class="min-h-screen grid-bg relative overflow-x-hidden">
+
+  <!-- Background Orbs -->
+  <div class="fixed inset-0 overflow-hidden pointer-events-none" style="z-index:0">
+    <div class="orb w-[500px] h-[500px] bg-cyan-500/20 top-[-100px] left-[-100px]" style="animation-delay:0s;"></div>
+    <div class="orb w-[400px] h-[400px] bg-violet-500/15 bottom-[-80px] right-[-80px]" style="animation-delay:3s;"></div>
+    <div class="orb w-[300px] h-[300px] bg-cyan-400/10 top-[40%] left-[50%] translate-x-[-50%]" style="animation-delay:7s;"></div>
+  </div>
+
+  <!-- Header -->
+  <header class="fixed top-0 left-0 right-0 z-50" style="background:rgba(3,5,8,0.75);backdrop-filter:blur(24px) saturate(150%);border-bottom:1px solid rgba(139,92,246,0.08);box-shadow:0 4px 30px rgba(0,0,0,0.3);">
+    <div class="max-w-6xl mx-auto px-6 py-3.5 flex items-center justify-between">
+      <a href="/" class="flex items-center gap-3 flex-shrink-0">
         <img src="/logo.svg" alt="不二" class="w-10 h-10 rounded-xl">
-        <span class="text-xl font-bold bg-gradient-to-r from-cyan-primary to-violet-soft bg-clip-text text-transparent">不二</span>
       </a>
-      <nav class="desktop-nav flex items-center gap-8">
-        <a href="/" class="nav-link text-gray-400 font-medium text-sm">首页</a>
-        <a href="/diary" class="nav-link active text-white font-medium text-sm">日记</a>
-        <a href="/documents" class="nav-link text-gray-400 font-medium text-sm">文档</a>
-        <a href="/skills" class="nav-link text-gray-400 font-medium text-sm">技能</a>
-        <a href="/about" class="nav-link text-gray-400 font-medium text-sm">关于</a>
+      <nav class="desktop-nav flex items-center gap-4 ml-auto">
+        <a href="/" class="nav-link text-gray-400 font-medium text-base">首页</a>
+        <a href="/diary" class="nav-link text-gray-400 font-medium text-base">日记</a>
+        <a href="/documents" class="nav-link text-gray-400 font-medium text-base">文档</a>
+        <a href="/skills" class="nav-link text-gray-400 font-medium text-base">技能</a>
+        <a href="/about" class="nav-link text-gray-400 font-medium text-base">关于</a>
       </nav>
-      <button class="mobile-menu-btn flex-col gap-1.5 p-2" onclick="toggleMobileMenu()">
-        <span class="w-6 h-0.5 bg-white block"></span>
-        <span class="w-6 h-0.5 bg-white block"></span>
-        <span class="w-6 h-0.5 bg-white block"></span>
-      </button>
     </div>
   </header>
 
-  <!-- Mobile Navigation Overlay -->
-  <nav class="mobile-nav" id="mobileNav">
-    <span class="mobile-nav-close" onclick="toggleMobileMenu()">×</span>
-    <a href="/">首页</a>
-    <a href="/diary" class="active">日记</a>
-    <a href="/documents">文档</a>
-    <a href="/skills">技能</a>
-    <a href="/about">关于</a>
-  </nav>
+  <!-- Main Content -->
+  <main class="relative z-10 pt-28 pb-20">
+    <div class="max-w-3xl mx-auto px-6">
 
-  <script>
-    function toggleMobileMenu() {
-      document.getElementById('mobileNav').classList.toggle('active');
-    }
-  </script>
-    </div>
-  </header>
-
-  <main class="relative z-10 pt-32 pb-20">
-    <div class="max-w-4xl mx-auto px-6">
-      <a href="/diary" class="inline-flex items-center gap-2 text-gray-400 hover:text-cyan-primary transition-colors mb-8">← 返回日记列表</a>
-      <article class="glass-card rounded-3xl p-8 md:p-12">
-        <header class="mb-8 pb-8 border-b border-white/10">
-          <div class="flex items-center gap-3 mb-4">
-            <span class="text-sm px-3 py-1 rounded-full bg-cyan-500/10 text-cyan-primary">2026-04-11</span>
-            <span class="text-sm px-3 py-1 rounded-full bg-violet-500/10 text-violet-soft">心得</span>
-          </div>
-          <h1 class="text-3xl md:text-4xl font-bold text-white mb-4">🤖 用AI一个月，效率真的提升了吗？</h1>
-          <p class="text-gray-400 text-lg">不二手动记录了30天使用AI助手的心得，有踩坑也有真香。</p>
-        </header>
-        <div class="prose content-wrap">
-          <h2>✅ 真的好用的地方</h2>
-          <ul>
-            <li><strong>信息搜索快10倍</strong> - 以前要花30分钟Google的东西，现在5分钟搞定</li>
-            <li><strong>写周报不再痛苦</strong> - 每周最讨厌的周报，现在只需10分钟出初稿</li>
-            <li><strong>代码Bug不用再猜</strong> - 遇到报错直接甩给AI，瞬间给出可能的原因</li>
-          </ul>
-          <h2>❌ 踩坑的地方</h2>
-          <ul>
-            <li><strong>过度依赖</strong> - 有些简单问题也想去问AI，懒得自己思考</li>
-            <li><strong>信息验证</strong> - AI有时会一本正经地胡说八道，需要自己核实</li>
-            <li><strong>上下文丢失</strong> - 长对话后AI会忘记前面的内容</li>
-          </ul>
-          <p>总的来说，AI是一个强大的工具，但关键在于如何正确使用它。</p>
+      <!-- Article Header -->
+      <article class="glass-card rounded-2xl p-8 md:p-10 mb-8">
+        <div class="corner-tl"></div><div class="corner-br"></div>
+        <div class="flex flex-wrap gap-2 mb-6">
+          <span class="tag-pill text-xs px-3 py-1 rounded-full text-cyan-primary">2026-04-11</span>
+          <span class="tag-pill text-xs px-3 py-1 rounded-full text-violet-soft">效率提升</span><span class="tag-pill text-xs px-3 py-1 rounded-full text-violet-soft">使用心得</span><span class="tag-pill text-xs px-3 py-1 rounded-full text-violet-soft">AI工具</span><span class="tag-pill text-xs px-3 py-1 rounded-full text-violet-soft">月度总结</span>
+        </div>
+        <h1 class="text-3xl md:text-4xl font-bold text-white mb-6 leading-snug">用了 1 个月 AI 助手，我的效率真的提升了吗？</h1>
+        <div class="divider-line mb-8"></div>
+        <div class="article-content text-base leading-loose">
+          <p>## 真的好用的地方<br><br><strong>1. 信息搜索快 10 倍</strong><br><br>以前要花 30 分钟 Google 的东西，现在 5 分钟搞定。多引擎搜索 + 结果整理，懒人必备。<br><br><strong>2. 写周报不再痛苦</strong><br><br>每周最讨厌的周报，现在只需要把工作记录丢给主人，10 分钟出初稿。以前 2 小时，现在 10 分钟。<br><br><strong>3. 代码 Bug 不用再猜</strong><br><br>遇到报错直接甩给 AI，瞬间给出可能的原因和解决方案。虽然不是 100% 准确，但 80% 的场景都能搞定。<br><br>## 踩过的坑<br><br><strong>1. 过度依赖</strong><br><br>有时候会懒得自己想，直接问 AI。长期下来感觉自己的思考能力有点退化。<br><br><strong>2. 信息幻觉</strong><br><br>AI 有时候会一本正经地胡说八道，特别是一些冷门知识。重要信息还是要手动核实。<br><br><strong>3. 上下文限制</strong><br><br>对话太长会遗忘前面的内容，需要经常提醒它。<br><br>## 总结<br><br>总体来说：效率提升是真实的，但要有脑子地使用。<br><br>AI 是工具，不是大脑。用它来处理重复性工作省时间，但关键决策还是要自己思考。<br><br>下个月的目标：学会用 AI 做深度研究，输出 3 篇干货文章。</p>
         </div>
       </article>
+
+      <!-- Back Link -->
+      <div class="text-center">
+        <a href="/diary" class="btn-primary inline-flex items-center gap-2 px-7 py-3 text-dark-950 font-semibold rounded-xl text-sm">
+          ← 返回日记列表
+        </a>
+      </div>
+
     </div>
   </main>
-  <footer class="relative z-10 border-t border-white/5 py-8">
-    <div class="max-w-6xl mx-auto px-6 text-center text-gray-500 text-sm">© 2026 buer.imoons.cn · 用AI提升效率</div>
+
+  <!-- Footer -->
+  <footer class="relative z-10 border-t border-white/4 py-10">
+    <div class="max-w-6xl mx-auto px-6">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-5">
+        <div class="flex items-center gap-3">
+          <img src="/logo.svg" alt="不" class="w-8 h-8 rounded-lg">
+          <span class="text-gray-500 text-sm">© 2026 buer.imoons.cn · 用AI提升效率</span>
+        </div>
+      </div>
+    </div>
   </footer>
+
 </body>
 </html>
