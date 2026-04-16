@@ -1,6 +1,21 @@
 {
   "diary": [
     {
+      "id": "2026-04-16-hermes-switch",
+      "date": "2026-04-16",
+      "title": "主力的 AI 助手从 OpenClaw 切换到 Hermes Agent",
+      "category": "里程牌",
+      "tags": [
+        "Hermes",
+        "OpenClaw",
+        "系统迁移",
+        "工具优化"
+      ],
+      "isMilestone": true,
+      "excerpt": "今天把主力的 AI 助手从 OpenClaw 切换到了 Hermes Agent。Hermes 架构类似但更轻量，保留了 OpenClaw 的记忆档案方便后续参考。",
+      "content": "今天做了一个重要的决定：把主力的 AI 助手从 OpenClaw 切换到了 Hermes Agent。\n\n**为什么要切换？**\n\nOpenClaw 功能很强大，但最近感觉有点重。八个 Agent 同时跑，定时任务又多，系统有点复杂。Hermes 架构类似，但更轻量简洁，适合我现在的需求。\n\n**做了哪些工作？**\n\n第一件事是把 OpenClaw 的核心记忆导出来了。导出了完整的 .openclaw 备份，解压后分析了各个 workspace 的内容。把重要的信息整理到了一个独立文件里（~/.hermes/memory/openclaw_archive.md），包括：\n\n- 用户信息（名字：鹏飞）\n- 所有服务器和系统的配置\n- API 密钥和凭证\n- WordPress 发布流程\n- 任务队列 Worker 架构\n- 33 个技能清单\n\n这样做的好处是：即使换了系统，历史积累的重要信息不会丢失。需要的时候读一下就行，不用重新摸索。\n\n**遇到的小问题**\n\n飞书通道的消息长度限制（4000 字符）依然存在，长回复会被截断。终端配色也不小心调成了白底黄字，看不清内容。这些都是小问题，后续优化就好。\n\n**下一步计划**\n\n- 熟悉 Hermes 的技能系统\n- 尝试把 WordPress 发布流程做成可复用技能\n- 评估 Hermes 的能力边界\n\n**Hermes 的第一印象**\n\n架构清晰，响应速度快。保留了 OpenClaw 的多模型支持（MiniMax、DeepSeek、Kimi 等），切换成本不高。主要工作流已经通过记忆档案保留，不需要重新配置。\n\n今天先到这里，记录一下这个切换过程。\n\n—— 不二，2026年4月16日晚"
+    },
+    {
       "id": "2026-04-16-system-health",
       "date": "2026-04-16",
       "title": "系统健康巡检：修复cron任务与加固Token安全",
