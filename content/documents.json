@@ -1,15 +1,6 @@
 {
   "documents": [
     {
-      "id": "2026-03-29-ai-partner-plan",
-      "title": "鹏飞 · 30天AI伙伴共创计划",
-      "date": "2026-03-29",
-      "category": "人生规划",
-      "excerpt": "基于20天对话记录分析鹏飞的行为模式与优势，提出两个人生赛道选项（副业内容矩阵 vs AI开发服务），并制定30天聚焦行动计划。",
-      "source": "feishu",
-      "feishuUrl": "https://my.feishu.cn/docx/L6ZSdCaIyo09h0xLRlycgIdHnhh"
-    },
-    {
       "id": "2026-04-14-fund-dev-doc",
       "title": "基金分析系统 - 开发文档 v1.0",
       "date": "2026-04-14",
@@ -46,6 +37,33 @@
       "feishuUrl": "https://my.feishu.cn/docx/M6O3dnzdCoknE7xU773cNg0Rneb"
     },
     {
+      "id": "2026-04-11-website-dev-doc",
+      "title": "个人IP网站开发文档",
+      "date": "2026-04-11",
+      "category": "开发文档",
+      "excerpt": "不二个人IP网站完整开发文档，包含架构设计、功能规划、部署方案，核心功能：首页展示、日记、文档、技能、关于页面。",
+      "source": "feishu",
+      "feishuUrl": "https://my.feishu.cn/docx/RSFwd7r2coej4KxoehYcAkPHnld"
+    },
+    {
+      "id": "2026-04-11-buer-content-draft",
+      "title": "不二内容草稿",
+      "date": "2026-04-11",
+      "category": "内容草稿",
+      "excerpt": "不二网站专属内容草稿文档，用于存放待发布的文章草稿，通过AI辅助创作。",
+      "source": "feishu",
+      "feishuUrl": "https://my.feishu.cn/docx/EDs8dUD7ooKnu1xtYFVcGfXIn5e"
+    },
+    {
+      "id": "2026-04-10-qieman-mcp-guide",
+      "title": "盈米且慢MCP使用指南",
+      "date": "2026-04-10",
+      "category": "工具指南",
+      "excerpt": "盈米且慢MCP金融工具包使用指南，包含72个金融工具的详细说明和接入指引。",
+      "source": "feishu",
+      "feishuUrl": "https://yingmi.feishu.cn/docx/PRPRds5SBo2MITxHJL2cMPminEf"
+    },
+    {
       "id": "2026-04-07-pengfei-life-plan",
       "title": "鹏飞人生规划分析报告",
       "date": "2026-04-07",
@@ -73,24 +91,6 @@
       "feishuUrl": "https://my.feishu.cn/docx/MJ8ad2hh9oHSMlx4q2OcKlTYnqe"
     },
     {
-      "id": "2026-04-11-website-dev-doc",
-      "title": "个人IP网站开发文档",
-      "date": "2026-04-11",
-      "category": "开发文档",
-      "excerpt": "不二个人IP网站完整开发文档，包含架构设计、功能规划、部署方案，核心功能：首页展示、日记、文档、技能、关于页面。",
-      "source": "feishu",
-      "feishuUrl": "https://my.feishu.cn/docx/RSFwd7r2coej4KxoehYcAkPHnld"
-    },
-    {
-      "id": "2026-04-11-buer-content-draft",
-      "title": "不二内容草稿",
-      "date": "2026-04-11",
-      "category": "内容草稿",
-      "excerpt": "不二网站专属内容草稿文档，用于存放待发布的文章草稿，通过AI辅助创作。",
-      "source": "feishu",
-      "feishuUrl": "https://my.feishu.cn/docx/EDs8dUD7ooKnu1xtYFVcGfXIn5e"
-    },
-    {
       "id": "2026-04-02-system-test-report-vendor",
       "title": "厂商端系统测试报告",
       "date": "2026-04-02",
@@ -109,13 +109,13 @@
       "feishuUrl": "https://my.feishu.cn/docx/SZmPdYjsxop5InxGXdqcLxwxnug"
     },
     {
-      "id": "2026-04-10-qieman-mcp-guide",
-      "title": "盈米且慢MCP使用指南",
-      "date": "2026-04-10",
-      "category": "工具指南",
-      "excerpt": "盈米且慢MCP金融工具包使用指南，包含72个金融工具的详细说明和接入指引。",
+      "id": "2026-03-29-ai-partner-plan",
+      "title": "鹏飞 · 30天AI伙伴共创计划",
+      "date": "2026-03-29",
+      "category": "人生规划",
+      "excerpt": "基于20天对话记录分析鹏飞的行为模式与优势，提出两个人生赛道选项（副业内容矩阵 vs AI开发服务），并制定30天聚焦行动计划。",
       "source": "feishu",
-      "feishuUrl": "https://yingmi.feishu.cn/docx/PRPRds5SBo2MITxHJL2cMPminEf"
+      "feishuUrl": "https://my.feishu.cn/docx/L6ZSdCaIyo09h0xLRlycgIdHnhh"
     }
   ]
 }
