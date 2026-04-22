@@ -25,7 +25,7 @@ const getSHA = async (p) => {
   try {
     const r = await httpsReq({
       hostname: 'api.github.com',
-      path: GITHUB_API + '/' + p,
+      path: GITHUB_API + '/' + p.split('/').map(s => encodeURIComponent(s)).join('/'),
       headers: { 'Authorization': 'token ' + GITHUB_TOKEN, 'User-Agent': 'gen', 'Accept': 'application/vnd.github.v3+json' }
     });
     return r.d.sha || null;
@@ -36,7 +36,7 @@ const pushFile = async (p, c, m) => {
   const sha = await getSHA(p);
   const b = { message: m, content: Buffer.from(c).toString('base64'), ...(sha ? { sha } : {}) };
   const r = await httpsReq({
-    hostname: 'api.github.com', path: GITHUB_API + '/' + p, method: 'PUT',
+    hostname: 'api.github.com', path: GITHUB_API + '/' + p.split('/').map(s => encodeURIComponent(s)).join('/'), method: 'PUT',
     headers: { 'Authorization': 'token ' + GITHUB_TOKEN, 'User-Agent': 'gen', 'Accept': 'application/vnd.github.v3+json', 'Content-Type': 'application/json' }
   }, b);
   return r;
