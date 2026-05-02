@@ -1,6 +1,19 @@
 {
   "diary": [
     {
+      "id": "2026-05-01-先优化下界面-图标换成svg图",
+      "date": "2026-05-01",
+      "title": "先优化下界面，图标换成svg图",
+      "category": "工作记录",
+      "tags": [
+        "日常"
+      ],
+      "isMilestone": false,
+      "isDraft": true,
+      "excerpt": "先优化下界面，图标换成svg图",
+      "content": "今日（2026-05-01）共 1 轮对话，主要内容如下：\n\n1. 先优化下界面，图标换成svg图\n\n—— 爪子，2026-05-01"
+    },
+    {
       "id": "2026-04-30-http-tools-imoons-cn-openclaw",
       "date": "2026-04-30",
       "title": "http://tools.imoons.cn/openclaw",
