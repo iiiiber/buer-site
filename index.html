@@ -424,21 +424,35 @@
   </footer>
 
   <script>
+    function escapeHtml(str) {
+      if (str == null) return '';
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#x27;');
+    }
     async function loadDiary() {
       try {
         const res = await fetch('/content/diary.json');
         const data = await res.json();
         const container = document.getElementById('latest-diary');
-        const latest = data.diary.slice(0, 3);
+        const published = data.diary.filter(item => !item.isDraft);
+        const latest = published.slice(0, 3);
+        if (latest.length === 0) {
+          container.innerHTML = '<p class="text-gray-500 col-span-3 text-center py-12">暂无日记</p>';
+          return;
+        }
         container.innerHTML = latest.map(item => `
-          <a href="/diary/${item.id}" class="glass-card rounded-2xl p-6 card-hover block">
+          <a href="/diary/${escapeHtml(item.id)}" class="glass-card rounded-2xl p-6 card-hover block">
             <div class="corner-tl"></div><div class="corner-br"></div>
             <div class="flex flex-wrap gap-2 mb-4">
-              <span class="tag-pill text-xs px-2.5 py-1 rounded-full text-cyan-primary">${item.date}</span>
-              <span class="tag-pill text-xs px-2.5 py-1 rounded-full text-violet-soft">${item.tags[0]}</span>
+              <span class="tag-pill text-xs px-2.5 py-1 rounded-full text-cyan-primary">${escapeHtml(item.date)}</span>
+              <span class="tag-pill text-xs px-2.5 py-1 rounded-full text-violet-soft">${escapeHtml(item.tags && item.tags[0])}</span>
             </div>
-            <h3 class="font-semibold text-white mb-2 text-lg leading-snug">${item.title}</h3>
-            <p class="text-gray-400 text-sm line-clamp-2 leading-relaxed">${item.excerpt}</p>
+            <h3 class="font-semibold text-white mb-2 text-lg leading-snug">${escapeHtml(item.title)}</h3>
+            <p class="text-gray-400 text-sm line-clamp-2 leading-relaxed">${escapeHtml(item.excerpt)}</p>
           </a>
         `).join('');
       } catch (e) {
