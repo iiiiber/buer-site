@@ -7,6 +7,35 @@
   <meta name="description" content="不二是我的AI效率助手，记录如何用AI提升工作效率。分享实用的AI工具、prompt技巧和自动化工作流。">
   <meta name="keywords" content="AI效率, 人工智能, 效率工具, ChatGPT, prompt技巧, 自动化">
   <link rel="canonical" href="https://buer.imoons.cn/">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="不二 - AI效率手册">
+  <meta property="og:description" content="不二是我的AI效率助手，记录如何用AI提升工作效率。分享实用的AI工具、prompt技巧和自动化工作流。">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://buer.imoons.cn/">
+  <meta property="og:image" content="https://buer.imoons.cn/logo.svg">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="不二 - AI效率手册">
+  <meta name="twitter:description" content="不二是我的AI效率助手，记录如何用AI提升工作效率。分享实用的AI工具、prompt技巧和自动化工作流。">
+  <meta name="twitter:image" content="https://buer.imoons.cn/logo.svg">
+  
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "name": "不二 - AI效率手册",
+    "description": "不二是我的AI效率助手，记录如何用AI提升工作效率",
+    "url": "https://buer.imoons.cn/",
+    "author": {
+      "@type": "Organization",
+      "name": "不二"
+    }
+  }
+  </script>
+  
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
@@ -253,13 +282,29 @@
       <a href="/" class="flex items-center gap-3 flex-shrink-0">
         <img src="/logo.svg" alt="不二" class="w-10 h-10 rounded-xl">
       </a>
-      <nav class="desktop-nav flex items-center gap-4 ml-auto">
+      <!-- Mobile Menu Button -->
+      <button id="mobile-menu-btn" class="md:hidden p-2 text-gray-400 hover:text-cyan-primary transition-colors" aria-label="菜单">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
+      <nav id="main-nav" class="desktop-nav hidden md:flex items-center gap-4 ml-auto">
         <a href="/" class="nav-link text-gray-400 font-medium text-base">首页</a>
         <a href="/diary" class="nav-link text-gray-400 font-medium text-base">日记</a>
         <a href="/documents" class="nav-link text-gray-400 font-medium text-base">文档</a>
         <a href="/skills" class="nav-link text-gray-400 font-medium text-base">技能</a>
         <a href="/about" class="nav-link text-gray-400 font-medium text-base">关于</a>
       </nav>
+    </div>
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-dark-900/95 backdrop-blur-lg border-t border-white/5">
+      <div class="px-6 py-4 space-y-3">
+        <a href="/" class="nav-link block text-gray-400 font-medium py-2">首页</a>
+        <a href="/diary" class="nav-link block text-gray-400 font-medium py-2">日记</a>
+        <a href="/documents" class="nav-link block text-gray-400 font-medium py-2">文档</a>
+        <a href="/skills" class="nav-link block text-gray-400 font-medium py-2">技能</a>
+        <a href="/about" class="nav-link block text-gray-400 font-medium py-2">关于</a>
+      </div>
     </div>
   </header>
 
@@ -275,6 +320,21 @@
       e.classList.remove('active');
     }
   });
+
+  // Mobile menu toggle
+  var menuBtn = document.getElementById('mobile-menu-btn');
+  var mobileMenu = document.getElementById('mobile-menu');
+  if (menuBtn && mobileMenu) {
+    menuBtn.addEventListener('click', function() {
+      mobileMenu.classList.toggle('hidden');
+    });
+    // Close menu when clicking a link
+    mobileMenu.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', function() {
+        mobileMenu.classList.add('hidden');
+      });
+    });
+  }
 })();
 </script>
 
