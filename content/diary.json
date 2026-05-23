@@ -1,6 +1,19 @@
 {
   "diary": [
     {
+      "id": "2026-05-22-page-imoons-cn-每次更新的是github的哪个分支啊",
+      "date": "2026-05-22",
+      "title": "page.imoons.cn 每次更新的是github的哪个分支啊",
+      "category": "技术测试",
+      "tags": [
+        "部署"
+      ],
+      "isMilestone": false,
+      "isDraft": true,
+      "excerpt": "page.imoons.cn 每次更新的是github的哪个分支啊",
+      "content": "今日（2026-05-22）共 15 轮对话，主要内容如下：\n\n1. page.imoons.cn 每次更新的是github的哪个分支啊\n\n2. github上为什么有两个分支呢 每次更新内容为什么没更新到main分支上呢\n\n3. 没有这些新内容\n\n4. 删掉github上的master分支\n\n5. 发下新的内容的网址\n\n6. 访问还是首页\n\n7. 能否将funds.imoons.cn网站的源码同步到github上，还需要包括数据库文件，以及后续别人部署的方案，以及代码介绍等同步到githu上，发方案给我确认\n\n8. 仓库名改为funds 其他的可以\n\n9. @_user_1 换一个faq\n\n10. 换一个faq@_user_1\n\n—— 爪子，2026-05-22"
+    },
+    {
       "id": "2026-05-21-user-1-自我进化-内容是-5月11号的时候-舅舅给我打了个电话-当时我刚好",
       "date": "2026-05-21",
       "title": "@_user_1 自我进化，内容是：  5月11号的时候，舅舅给我打了个电话，当时我刚好在吃饭。他告",
